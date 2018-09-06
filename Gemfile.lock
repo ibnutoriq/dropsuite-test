@@ -2,6 +2,10 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
+    colorize (0.8.1)
+    fasterer (0.4.1)
+      colorize (~> 0.7)
+      ruby_parser (~> 3.11.0)
     jaro_winkler (1.5.1)
     parallel (1.12.1)
     parser (2.5.1.2)
@@ -17,12 +21,16 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.10.0)
+    ruby_parser (3.11.0)
+      sexp_processor (~> 4.9)
+    sexp_processor (4.11.0)
     unicode-display_width (1.4.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  fasterer
   rubocop
 
 RUBY VERSION
