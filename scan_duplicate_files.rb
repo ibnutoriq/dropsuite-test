@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+# frozen_string_literal: true
 
 require 'find'
 require 'digest/md5'
@@ -12,7 +12,7 @@ def scan_duplicate_files(path)
     (sizes[File.size(file)] ||= []) << file if File.file?(file)
   end
 
-  sizes.each do |size, files|
+  sizes.each do |_, files|
     next unless files.size > 1
 
     files.each do |f|
@@ -22,11 +22,8 @@ def scan_duplicate_files(path)
     end
   end
 
-  paths = md5s
-    .map {|k, v| v}
-    .sort_by {|v| -v.size }
-    .first
-    
+  paths = md5s.map { |_, v| v }.min_by { |v| -v.size }
+
   puts "#{File.read(paths.first)} #{paths.length}"
 end
 
